@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validador de Afiliaciones - Secretaría Zona</title>
+    <script>
+      // Make window.fetch configurable and writable (with getter/setter) to prevent modern third-party libraries (such as PDF.js or Firebase)
+      // from throwing a fatal TypeError in sandbox/iframe environments when attempting to patch, polyfill, or wrap fetch.
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var fetchValue = originalFetch;
+          
+          try {
+            delete window.fetch;
+          } catch (e) {}
+
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return fetchValue;
+            },
+            set: function(val) {
+              fetchValue = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (err) {
+          console.warn("Failed to patch window.fetch getter/setter:", err);
+        }
+      })();
+    </script>
+    <!-- Mammoth and PDF.js CDNs for client-side document processing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

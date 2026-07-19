@@ -1,0 +1,6 @@
+{
+  "name": "Validador de Afiliados",
+  "description": "Aplicación de comparación y validación de archivos de afiliados contra una base de referencia en Google Drive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
